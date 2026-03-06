@@ -1,0 +1,128 @@
+###############################################################################
+# OS junk
+###############################################################################
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+###############################################################################
+# IDEs & editors
+###############################################################################
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# JetBrains Rider
+.idea/
+*.iml
+
+# VS Code (ignore workspace-specific settings; keep shared)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.sample.json
+!.vscode/tasks.sample.json
+!.vscode/launch.sample.json
+
+###############################################################################
+# .NET build output
+###############################################################################
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+*.log
+*.tlog
+
+# Build configurations
+[Dd]ebug*/
+[Rr]elease*/
+x64/
+x86/
+[Aa][Rr][Mm]*/
+[Aa][Rr][Mm]64/
+
+# Publish output
+[Pp]ublish/
+**/publish/
+
+# Temporary & cache
+*.cache
+*.tmp
+*.temp
+
+###############################################################################
+# Testing & coverage
+###############################################################################
+[Tt]est[Rr]esults/
+*.trx
+*.coverage
+*.coveragexml
+
+###############################################################################
+# NuGet
+###############################################################################
+# Packages folder (if used by older projects)
+packages/
+# Keep build scripts inside packages
+!packages/build/
+*.nupkg
+*.snupkg
+# NuGet config generated per-user
+*.nuget.props
+*.nuget.targets
+
+###############################################################################
+# Entity Framework / Tools
+###############################################################################
+# (EF Migrations SHOULD be committed)
+# If using dotnet-ef design-time files:
+obj/**/project.assets.json
+obj/**/project.nuget.cache
+
+###############################################################################
+# ASP.NET Core specifics
+###############################################################################
+# User secrets are stored outside repo by default; keep any accidental copies out
+secrets.json
+
+# Environment-specific appsettings (keep an example checked in)
+appsettings.Development.local.json
+appsettings.*.local.json
+appsettings.local.json
+
+# IIS / Hosting
+*.vspscc
+*.vssscc
+.publishsettings
+
+# Publish profiles: keep .pubxml (checked in), ignore user overrides
+*.pubxml.user
+
+###############################################################################
+# Front-end folders inside API (if you host SPA under wwwroot)
+###############################################################################
+wwwroot/node_modules/
+wwwroot/lib/
+wwwroot/dist/
+
+###############################################################################
+# Misc
+###############################################################################
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.ipr
+*.sln.cache
