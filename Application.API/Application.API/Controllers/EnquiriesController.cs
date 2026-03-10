@@ -1,22 +1,24 @@
 ﻿using Application.API.Data;
 using Application.API.Models.Domain;
 using Application.API.Models.DTO;
+using Application.API.Repositories.Implementation;
+using Application.API.Repositories.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Application.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("Api/[controller]")]
     [ApiController]
     public class EnquiriesController : ControllerBase
     {
-        public readonly ApplicationDbContext _dbContext;
-        public EnquiriesController(ApplicationDbContext dbContext) 
+        private readonly IEnquiryRepository _enquiriesRepository;
+        public EnquiriesController(IEnquiryRepository enquiriesRepository) 
         {
-            this._dbContext = dbContext;
+            this._enquiriesRepository = enquiriesRepository;
         }
-        [HttpPost]
-        public async Task<IActionResult> CreateEnquiry(EnquiriesRequest enqReq)
+        [HttpPost("AddEnquiry")]
+        public async Task<IActionResult> CreateEnquiry(EnquiriesDto enqReq)
         {
             var enquiryDomain = new Enquiry
             {
@@ -32,12 +34,32 @@ namespace Application.API.Controllers
                 Pincode = enqReq.Pincode
             };
 
-            await _dbContext.Enquiries.AddAsync(enquiryDomain);
-            await _dbContext.SaveChangesAsync();
-            var response = new
+            await _enquiriesRepository.AddEnquiryAsync(enquiryDomain);
+
+            return Ok(new { status = "success" });
+        }
+
+        [HttpGet("GetEnquiries")]
+        public async Task<IActionResult> GetAllEnquiries()
+        {
+            var response = new List<EnquiriesDto>();
+            var enquiriesList = await _enquiriesRepository.GetAllEnquiriesAsync();
+            foreach(var enquiries in enquiriesList)
             {
-                Status = "Success"
-            };
+                response.Add(new EnquiriesDto
+                {
+                    CustomerName = enquiries.CustomerName,
+                    CustomerPhone = enquiries.CustomerPhone,
+                    CustomerEmail = enquiries.CustomerEmail,
+                    Service = enquiries.Service,
+                    Message = enquiries.Message,
+                    Address = enquiries.Address,
+                    Landmark =enquiries.Landmark,
+                    City =enquiries.City,
+                    State =enquiries.State,
+                    Pincode =enquiries.Pincode
+                });
+            }
             return Ok(response);
         }
     }
