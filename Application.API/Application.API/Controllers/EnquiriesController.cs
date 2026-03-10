@@ -27,11 +27,11 @@ namespace Application.API.Controllers
                 CustomerEmail = enqReq.CustomerEmail,
                 Service = enqReq.Service,
                 Message = enqReq.Message,
-                Address = enqReq.Address,
-                Landmark = enqReq.Landmark,
-                City = enqReq.City,
-                State = enqReq.State,
-                Pincode = enqReq.Pincode
+                //Address = enqReq.Address,
+                //Landmark = enqReq.Landmark,
+                //City = enqReq.City,
+                //State = enqReq.State,
+                //Pincode = enqReq.Pincode
             };
 
             await _enquiriesRepository.AddEnquiryAsync(enquiryDomain);
@@ -53,11 +53,11 @@ namespace Application.API.Controllers
                     CustomerEmail = enquiries.CustomerEmail,
                     Service = enquiries.Service,
                     Message = enquiries.Message,
-                    Address = enquiries.Address,
-                    Landmark =enquiries.Landmark,
-                    City =enquiries.City,
-                    State =enquiries.State,
-                    Pincode =enquiries.Pincode
+                    //Address = enquiries.Address,
+                    //Landmark =enquiries.Landmark,
+                    //City =enquiries.City,
+                    //State =enquiries.State,
+                    //Pincode =enquiries.Pincode
                 });
             }
             return Ok(response);
