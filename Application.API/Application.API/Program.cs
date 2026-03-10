@@ -1,4 +1,6 @@
 using Application.API.Data;
+using Application.API.Repositories.Implementation;
+using Application.API.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnectionString"));
 });
+
+builder.Services.AddScoped<IEnquiryRepository, EnquiryRepository>();
 
 var app = builder.Build();
 
